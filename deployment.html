@@ -7,31 +7,59 @@
     <link rel="stylesheet" href="deployment.css" />
   </head>
   <body>
-    <header>
-      <!-- Empty header -->
-    </header>
+    <header>header</header>
 
     <main>
-      <button id="previewBtn" onclick="showPreview()">Preview</button>
-      <button id="deploymentBtn" onclick="showDeployment()">Deployment</button>
-
-      <div id="previewContent">
-        <!-- Content for preview -->
-        <h2>Preview Content</h2>
-        <p>This is the content for preview.</p>
-      </div>
-
-      <div id="deploymentContent" style="display: none">
-        <!-- Content for deployment -->
-        <h2>Deployment Content</h2>
-        <p>This is the content for deployment.</p>
+      <div class="tabs">
+        <div class="tab-2">
+          <label for="tab2-1">Preview</label>
+          <input id="tab2-1" name="tabs-two" type="radio" checked="checked" />
+          <div>
+            <h4>Preview</h4>
+            <div>Allam Work Lives Here</div>
+            <div class="PreviewBtns">
+              <button class="Btn_in_preview button-81">Retrain</button>
+              <button class="Btn_in_preview button-81">Add To Chats</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-2">
+          <label for="tab2-2">Deployment</label>
+          <input id="tab2-2" name="tabs-two" type="radio" />
+          <div>
+            <h4>Tab Two</h4>
+            <p>
+              Quisque sit amet turpis leo. Maecenas sed dolor mi. Pellentesque
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              dolorem, distinctio iure expedita tempora et eos veniam fugit
+              dolor quos commodi ipsum fugiat odio dolorum maiores aspernatur
+              placeat dolore qui.
+            </p>
+          </div>
+        </div>
       </div>
     </main>
 
-    <footer>
-      <!-- Empty footer -->
-    </footer>
+    <footer>footer</footer>
 
     <script src="deployment.js"></script>
   </body>
 </html>
+
+<!-- <div class="controlBtns">
+    <button id="previewBtn" onclick="showPreview()">Preview</button>
+    <button id="deploymentBtn" onclick="showDeployment()">
+      Deployment
+    </button>
+  </div>
+  <div id="previewContent">
+    <h2>Preview Content</h2>
+    <p>This is the content for preview.</p>
+    <button>clikme</button>
+  </div>
+
+  <div id="deploymentContent" style="display: none">
+
+    <h2>Deployment Content</h2>
+    <p>This is the content for deployment.</p>
+  </div> -->
