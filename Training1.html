@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WasmLLM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Training1.css" />
+  </head>
+  <body>
+    <div class="header">
+    <!--   <h2>Header</h2> -->
+    </div>
+
+    <h2>Choose the Training mode you want</h2>
+
+    <div class="middle container">
+
+    <div class="column">
+      <p class="title">LoRA</p>
+      <p class="description">
+        LoRA (Low-Rank Adaptation) is a parameter-efficient technique for training large language models (LLMs) in a self-supervised manner across various types of data. It is especially effective for fine-tuning models on specific downstream tasks using your own dataset.
+      </p>
+      <div class="btn" id="second-btn"><a href="Lora.html">USE LoRA</a></div>
+    </div>
+
+
+      <div class="column">
+        <p class="title">RHLF</p>
+        <p class="description">
+          Reinforcement Learning from Human Feedback is a method for improving LLMs by integrating human feedback into the training process. This approach allows models to refine their responses based on evaluations of desired outputs, ensuring that generated content closely aligns with human values and preferences, ideal for user-centric applications.
+        </p>
+        <div class="btn" id="first-btn"><a href="PPO.html">USE RHLF</a></div>
+      </div>
+
+
+      <div class="column">
+        <p class="title">DPO</p>
+        <p class="description">
+          DPO customizes LLMs to align with specific user preferences. The model is trained using a prompt, a preferred response, and a dispreferred response. The model learns to favor responses that are more aligned with the desired outcomes and reduce the generation of undesirable responses. This technique is advantageous for applications requiring highly personalized and aligned content generation.
+        </p>
+        <div class="btn" id="third-btn"><a href="DPO.html">USE DPO</a></div>
+      </div>
+    </div>
+
+    <!-- <div class="footer"> -->
+    <!--   <p>Footer</p> -->
+    <!-- </div> -->
+  </body>
+</html>

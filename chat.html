@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+        <meta name="description" content="A conversational AI system that listens, learns, and challenges">
+        <meta property="og:title" content="WasmLLM">
+        <!-- <meta property="og:image" content="https://openai.com/content/images/2022/11/ChatGPT.jpg"> -->
+        <meta property="og:description" content="In-browser LLM inference and training platform">
+        <meta property="og:url" content="https://chat.acy.dev">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+        <link rel="manifest" href="/assets/img/site.webmanifest">
+        <script src="/assets/js/icons.js"></script>
+        <script src="/assets/js/chat.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/markdown-it@latest/dist/markdown-it.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/base16/dracula.min.css">
+        <script>
+            const user_image        = `<img src="/assets/img/user.png" alt="User Avatar">`;
+            const gpt_image         = `<img src="/assets/img/gpt.png" alt="GPT Avatar">`;
+        </script>
+        <style>
+            .hljs {
+                color: #e9e9f4;
+                background: #28293629;
+                border-radius: var(--border-radius-1);
+                border: 1px solid var(--blur-border);
+                font-size: 15px;
+            }
+
+            #message-input {
+                margin-right: 30px;
+                height: 80px;
+            }
+
+            #message-input::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            /* Track */
+            #message-input::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+            }
+            
+            /* Handle */
+            #message-input::-webkit-scrollbar-thumb {
+                background: #c7a2ff; 
+            }
+
+            /* Handle on hover */
+            #message-input::-webkit-scrollbar-thumb:hover {
+                background: #8b3dff; 
+            }
+        </style>
+        <script src="/assets/js/highlight.min.js"></script>
+        <script src="/assets/js/highlightjs-copy.min.js"></script>
+        <script>window.conversation_id = `{{chat_id}}`</script>
+        <title>WasmLLM</title>
+    </head>
+    <body>
+        <div class="gradient"></div>
+        <div class="row">
+            <div class="box conversations">
+
+                <div class="top2">
+                    <button class="new_convo top2" onclick="open_hub_page()">
+                        <i class="fa-regular fa-store"></i>
+                        <span>Choose Your Model</span>
+                    </button>
+                </div>
+
+                <div class="top">
+                    <button class="new_convo" onclick="new_conversation()">
+                        <i class="fa-regular fa-plus"></i>
+                        <span>New Conversation</span>
+                    </button>
+                    <div class="spinner"></div>
+                </div>
+
+                <div class="bottom_buttons">
+                    <button onclick="delete_conversations()">
+                        <i class="fa-regular fa-trash"></i>
+                        <span>Clear Conversations</span>
+                    </button>
+                    <div class="info">
+                        <i class="fa-regular fa-circle-info"></i>
+                        <span class="convo-title">
+                            <b>WasmLLM</b><br>
+                            Version: 0.0.1-beta<br>
+                            Release: 2024-04-11<br>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="choose-model disable-scrollbars" id="hub_page">
+                <div class="top">
+                    <span>WasmLLM Hub</span>
+                </div>
+                <div class="box models-box">
+                    <div id="models" class="models-list disable-scrollbars">
+
+                    </div>
+
+                    <button class="load-model" onclick="load_model()" id="load_model_button" disabled>
+                        <i class="fa-regular fa-comment-alt-smile"></i>
+                        <span>Start Chatting!</span>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <div class="conversation disable-scrollbars" id="chat_page" style="display: none;">
+                <div class="top">
+                    <span id="chat_label">Chat</span>
+                </div>
+
+                <div class="stop_generating stop_generating-hidden">
+                    <button id="cancelButton" onclick="cancelGeneration()">
+                        <span>Stop Generating</span>
+                        <i class="fa-regular fa-stop"></i>
+                    </button>
+                </div>
+                <div class="box disable-scrollbars" id="messages">
+                </div>
+                <div class="user-input">
+                    <div class="box input-box">
+                        <textarea id="message-input" placeholder="Enter your Prompt" cols="30" rows="10" style="white-space: pre-wrap;" oninput="resizeTextarea(this)"></textarea>
+                        <div id="send-button">
+                            <i class="fa-regular fa-paper-plane-top"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="field">
+                        <!-- Add buttons for attaching file, attaching image, attaching voice (for speech to text), etc -->
+                        <div class="button" id="attach-file" onclick="attachFile()">
+                            <i class="fa-regular
+                            fa-paperclip"></i>
+                        </div>
+
+                        <div class="button" id="attach-image" onclick="attachFile()">
+                            <i class="fa-regular fa-image"></i>
+
+                        </div>
+
+                        <div class="button" id="attach-voice" onclick="attachFile()">
+                            <i class="fa-regular
+                            fa-microphone"></i>
+
+
+                        </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            <div class="box conversations" id="chat_parameters" style="display: none;">
+
+                <div class="settings-panel">
+                    <h2>Model Settings</h2>
+                        <span id="tempValue">Temperature</span>
+                        <input type="range" id="temperature" name="temperature" step="0.01" value="0.7" min="0" max="1" oninput="updateLabel('tempValue', this.value)">
+                        <span class="span-left">More Percise</span>
+                        <span class="span-right">More Creative</span>
+
+                        <span id="topPValue">Top-P</span>
+                        <input type="range" id="top_p" name="top_p" step="0.01" value="0.9" min="0" max="1" oninput="updateLabel('topPValue', this.value)">
+
+
+                        <span class="span-left">0.01</span>
+                        <span class="span-right">1.0</span>
+
+                        <span id="topKValue">Top-K</span></label>
+                        <input type="range" id="top_k" name="top_k" step="1" value="40" min="0" max="100" oninput="updateLabel('topKValue', this.value)">
+
+                        <span class="span-left">0</span>
+                        <span class="span-right">100</span>
+
+                        <span id="maxTokensValue">Max Tokens</span>
+                        <input type="range" id="max_tokens" name="max_tokens" step="1" value="100" min="1" max="1000" oninput="updateLabel('maxTokensValue', this.value)">
+                        <span class="span-left">1</span>
+                        <span class="span-right">1000</span>
+
+                        <span id="frequencyPenaltyValue">Frequency Penalty</span>
+                        <input type="range" id="frequency_penalty" name="frequency_penalty" step="0.01" value="0.0" min="0" max="2" oninput="updateLabel('frequencyPenaltyValue', this.value)">
+
+                        <span class="span-left">0</span>
+                        <span class="span-right">2</span>
+
+                        <span id="presencePenaltyValue">Presence Penalty</span>
+                        <input type="range" id="presence_penalty" name="presence_penalty" step="0.01" value="0.0" min="0" max="2" oninput="updateLabel('presencePenaltyValue', this.value)">
+
+                        <span class="span-left">0</span>
+                        <span class="span-right">2</span>
+
+
+                </div>
+
+
+            </div>
+
+
+        <div class="mobile-sidebar">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </body>
+</html>
+

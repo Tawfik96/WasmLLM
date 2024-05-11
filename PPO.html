@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_config.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Configurations</title>
+</head>
+<body>
+    <header class = "head">
+        <div class="logo-container">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="website-name">WasmLLM</span>
+        </div>
+    </header class = "head">
+    <div class = "body">
+
+    <form>
+        <fieldset id="training-config">
+            <legend>RLHF</legend>
+            <!-- Experiment Name -->
+            <div class="parameter-setting">
+                <label for="expName" class="param-label">Experiment Name</label>
+                <input type="text" id="expName" name="expName" class="param-input" placeholder="Enter experiment name">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Specifies the experiment name, usually derived from the filename.</span>
+                </span>
+            </div>
+
+            <!-- Seed -->
+            <div class="parameter-setting">
+                <label for="seed" class="param-label">Seed</label>
+                <input type="number" id="seed" name="seed" value="0" class="param-input">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Sets the seed value for random generation to ensure reproducibility.</span>
+                </span>
+            </div>
+
+            <!-- Logging Tool -->
+            <div class="parameter-setting">
+                <label for="logWith" class="param-label">Logging Tool</label>
+                <select id="logWith" name="logWith" class="param-input">
+                    <option value="">Select...</option>
+                    <option value="wandb">WandB</option>
+                    <option value="tensorboard">TensorBoard</option>
+                </select>
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Selects the logging tool to use for tracking experiments (wandb or tensorboard).</span>
+                </span>
+            </div>
+
+            <!-- Task Name -->
+            <div class="parameter-setting">
+                <label for="taskName" class="param-label">Task Name</label>
+                <input type="text" id="taskName" name="taskName" class="param-input" placeholder="Enter task name">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Names the task for tracking and logging purposes.</span>
+                </span>
+            </div>
+
+            <!-- Model Name -->
+            <div class="parameter-setting">
+                <label for="modelName" class="param-label">Model Name</label>
+                <input type="text" id="modelName" name="modelName" value="gpt2" class="param-input">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Names the model to be used, primarily for tracking.</span>
+                </span>
+            </div>
+
+            <!-- Query Dataset -->
+            <div class="parameter-setting">
+                <label for="queryDataset" class="param-label">Query Dataset</label>
+                <input type="text" id="queryDataset" name="queryDataset" value="imdb" class="param-input">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Specifies the dataset to query, typically for evaluation or training.</span>
+                </span>
+            </div>
+
+            <!-- Reward Model -->
+            <div class="parameter-setting">
+                <label for="rewardModel" class="param-label">Reward Model</label>
+                <input type="text" id="rewardModel" name="rewardModel" value="sentiment-analysis:lvwerra/distilbert-imdb" class="param-input">
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Defines the reward model to be used for determining the reward in training scenarios.</span>
+                </span>
+            </div>
+
+            <!-- Remove Unused Columns -->
+            <div class="parameter-setting">
+                <label for="removeUnusedColumns" class="param-label">Remove Unused Columns</label>
+                <select id="removeUnusedColumns" name="removeUnusedColumns" class="param-input">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Whether to remove unused columns from the dataset, improving data handling efficiency.</span>
+                </span>
+            </div>
+
+            <!-- Tracker Keyword Arguments -->
+            <div class="parameter-setting">
+                <label for="trackerKwargs" class="param-label">Tracker Keyword Arguments</label>
+                <input type="text" id="trackerKwargs" name="trackerKwargs" class="param-input" placeholder='{"key": "value"}'>
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Allows specification of keyword arguments for the tracking tool in JSON format.</span>
+                </span>
+            </div>
+
+            <!-- Accelerator Keyword Arguments -->
+            <div class="parameter-setting">
+                <label for="acceleratorKwargs" class="param-label">Accelerator Keyword Arguments</label>
+                <input type="text" id="acceleratorKwargs" name="acceleratorKwargs" class="param-input" placeholder='{"key": "value"}'>
+                <span class="material-symbols-outlined info-icon">
+                    info
+                    <span class="tooltipText">Enables specifying additional settings for the accelerator in JSON format.</span>
+                </span>
+            </div>
+
+        <button id="submit_training">Confirm</button>
+        </fieldset>
+
+    </form>
+    </div>
+    <footer>
+        WasmLLM 2024
+    </footer>
+    <script src="script_config.js"></script>
+</body>
+</html>

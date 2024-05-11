@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.head {
+    position: fixed; /* Keeps the header fixed at the top of the page */
+    top: 0;
+    width: 100%; /* Ensures the header extends full width */
+    background-color: #333; /* Dark background for the theme */
+    color: #fff; /* White text color */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds shadow for better visibility */
+    z-index: 1000; /* Ensures the header stays above other content */
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); /* Adds shadow to the bottom of the header for better visibility */
+    height: 70px;
+}
+
+h4 {
+    margin: 80px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    margin-top: 10px;
+    font-size: 24px; /* Initial size of the logo and text */
+}
+
+.material-symbols-outlined {
+    font-size: 42px; /* Larger size for the logo */
+    transition: transform 0.3s ease; /* Smooth transformation */
+    
+}
+
+.website-name {
+    margin-left: 13px; /* Space between the icon and text */
+}
+
+.material-symbols-outlined:hover {
+    transform: scale(1.3); /* Make the icon 1.5 times bigger on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+
+.page {
+    margin-top: 60px; /* Ensures the content doesn't overlap with the header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #1E1E1E;
+}
+
+
+#upload-container{
+    /* background-color: #353536; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    width: 700px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+}
+
+/* upload container with half-window class has width 300px */
+#upload-container.active{
+    border: 2px solid #ccc;
+}
+
+#upload-container.half-window{
+    width: 300px;
+    /* delete border */
+    border: none;
+}
+
+
+header{
+    font-size: 30px;
+    /* aling text to center */
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+span.styling{
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+}
+span.material-symbols-outlined.styling {
+    font-size: 60px;
+}
+button{
+    transition: transform 0.3s ease; /* Smooth transformation */
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #5256ad; /* dark purple */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.3); /* Make the icon 1.5 times bigger on hover */
+
+}
+.go-to-training{
+    /* put a little margin between it and the element to its right */
+    margin-left: 40px;
+}
+
+.file-list{
+    height: 320px;
+    /* make it scrollable */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.file_item{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color: #353536;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.file_type{
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 10px;
+}
+
+
+/*
+ *  scrollbar-style
+ */
+
+ .scrollbar-style::-webkit-scrollbar-track
+ {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   border-radius: 10px;
+    background-color: #808080;
+ }
+ 
+ .scrollbar-style::-webkit-scrollbar
+ {
+   width: 6px;
+   background-color: #808080;
+ }
+ 
+ .scrollbar-style::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   background-color: #5256ad;
+ }
+
+ .file_name{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.file_size{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: #1E1E1E;
+    padding: 10px 0;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    color: #b0b0b0; /* White text */
+    font-size: 16px;
+    width: 100%;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WasmLLM</title>
+    
+
+    <!-- Bootstrap + main styles -->
+	<link rel="stylesheet" href="landing_style.css">
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home" class="dark-theme">
+    
+    <!-- page navbar -->
+    <nav class="page-navbar" data-spy="affix" data-offset-top="10">
+        <ul class="nav-navbar container">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" id="logo" style="font-size: xx-large;">WasmLLM</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        </ul>
+    </nav><!-- end of page navbar -->
+
+    <!-- page header -->
+    <header class="header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1 class="header-title">Your Model, Your Way!</h1>
+            <p class="header-subtitle" style="font-size: 24px;">Create Your Own LLM without Any Prior Coding Experience</p>
+            <button class="btn btn-theme-color" id="trainButton" style="margin-right: 64px;">Train Your Model</button>
+            <button class="btn btn-theme-color" id="chatButton">Chat with an Exisiting Model</button>
+            <script>
+                document.getElementById("trainButton").onclick = function() {
+                    window.location.href = "Training1.html";
+                };
+            </script>
+
+            <script>
+                document.getElementById("chatButton").onclick = function() {
+                    window.location.href = "http://127.0.0.1:8080/chat.html";
+                };
+            </script>
+        </div>
+    </header><!-- end of page header -->
+
+
+
+            <!-- footer -->
+            <footer class="footer">
+                <p class="infos">&copy; <script>document.write(new Date().getFullYear())</script></p>
+                <span>|</span>  
+            </footer><!-- end of footer -->
+
+        </div><!-- end of container -->
+    </div><!-- end of pre footer -->
+
+
+</body>
+</html>

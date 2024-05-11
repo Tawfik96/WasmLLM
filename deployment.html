@@ -3,99 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preview and Deployment</title>
+    <title>Model Deployment</title>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="deployment.css" />
   </head>
   <body>
     <header>header</header>
 
     <main>
-      <div class="tabs">
         <div class="tab-2">
-          <label for="tab2-1">Preview</label>
-          <input id="tab2-1" name="tabs-two" type="radio" checked="checked" />
-          <div>
-            <h4>Preview</h4>
-            <div>Allam Work Lives Here</div>
-            <div class="PreviewBtns">
-              <button class="Btn_in_preview button-81">Retrain</button>
-              <button class="Btn_in_preview button-81">Add To Chats</button>
-            </div>
-          </div>
-        </div>
-        <div class="tab-2">
-          <label for="tab2-2">Deployment</label>
-          <input id="tab2-2" name="tabs-two" type="radio" />
+          <h2 style="text-align: center;">Deploy Your Model</h2>
           <div>
             <!-- <h2>Deployment</h2> -->
             <div class="container">
               <div class="column">
                 <h2>WasmLLM Hub</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-                  eligendi quasi corporis autem! Minus, numquam.
+                <p style="text-align: center;">
+                  Upload your model to WasmLLM Hub and share it with the world.
                 </p>
                 <button id="openModal1" class="deploymentBtn">Upload</button>
+
 
                 <div id="myModal1" class="modal">
                   <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>Uploading To WasmLLM Hub</p>
-                    <form action="">
+                    <form onsubmit="handleWasmUpload(event)">
                       <div class="form-control">
-                        <input type="value" required="" />
+                        <input type="text" required id="model_name" name="model_name" />
                         <label>
                           <span style="transition-delay: 0ms">M</span
-                          ><span style="transition-delay: 50ms">o</span
-                          ><span style="transition-delay: 100ms">d</span
-                          ><span style="transition-delay: 150ms">e</span
-                          ><span style="transition-delay: 200ms">l</span
-                          ><span style="transition-delay: 250ms"> </span
-                          ><span style="transition-delay: 300ms">N</span
-                          ><span style="transition-delay: 350ms">a</span
-                          ><span style="transition-delay: 400ms">m</span
-                          ><span style="transition-delay: 450ms">e</span>
+                                                                 ><span style="transition-delay: 50ms">o</span
+                                                                                                          ><span style="transition-delay: 100ms">d</span
+                                                                                                                                                    ><span style="transition-delay: 150ms">e</span
+                                                                                                                                                                                              ><span style="transition-delay: 200ms">l</span
+                                                                                                                                                                                                                                        ><span style="transition-delay: 250ms"> </span
+                                                                                                                                                                                                                                                                                  ><span style="transition-delay: 300ms">N</span
+                                                                                                                                                                                                                                                                                                                            ><span style="transition-delay: 350ms">a</span
+                                                                                                                                                                                                                                                                                                                                                                      ><span style="transition-delay: 400ms">m</span
+                                                                                                                                                                                                                                                                                                                                                                                                                ><span style="transition-delay: 450ms">e</span>
                         </label>
                       </div>
                       <div class="form-control">
-                        <input type="email" required="" />
+                        <input type="email" required name="user_email" />
                         <label>
                           <span style="transition-delay: 0ms">E</span
-                          ><span style="transition-delay: 50ms">m</span
-                          ><span style="transition-delay: 100ms">a</span
-                          ><span style="transition-delay: 150ms">i</span
-                          ><span style="transition-delay: 200ms">l</span>
+                                                                 ><span style="transition-delay: 50ms">m</span
+                                                                                                          ><span style="transition-delay: 100ms">a</span
+                                                                                                                                                    ><span style="transition-delay: 150ms">i</span
+                                                                                                                                                                                              ><span style="transition-delay: 200ms">l</span>
+                        </label>
+                      </div>
+                      <div class="form-control">
+                        <input type="text" required name="model_description" />
+                        <label>
+                          <span style="transition-delay: 0ms">D</span
+                                                                 ><span style="transition-delay: 50ms">e</span
+                                                                                                          ><span style="transition-delay: 100ms">s</span
+                                                                                                                                                    ><span style="transition-delay: 150ms">c</span
+                                                                                                                                                                                              ><span style="transition-delay: 200ms">r</span
+                                                                                                                                                                                                                                        ><span style="transition-delay: 250ms">i</span
+                                                                                                                                                                                                                                                                                  ><span style="transition-delay: 300ms">p</span
+                                                                                                                                                                                                                                                                                                                            ><span style="transition-delay: 350ms">t</span
+                                                                                                                                                                                                                                                                                                                                                                      ><span style="transition-delay: 400ms">i</span
+                                                                                                                                                                                                                                                                                                                                                                                                                ><span style="transition-delay: 450ms">o</span
+                                                                                                                                                                                                                                                                                                                                                                                                                                                          ><span style="transition-delay: 500ms">n</span>
                         </label>
                       </div>
                       <button class="button-38" type="submit">
-                        Upload To WasmLLM
+                        Upload To WasmLLM Hub
                       </button>
                     </form>
                   </div>
                 </div>
+
+
+
+
+
               </div>
               <div class="separator"></div>
               <div class="column">
                 <h2>Hugging Face</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-                  eligendi quasi corporis autem! Minus, numquam.
+                <p style="text-align: center;">
+                  Upload your model to Hugging Face, the world's largest model weights repository, to be used by the open-source LLM community.
                 </p>
                 <button id="openModal2" class="deploymentBtn">Upload</button>
               </div>
               <div class="separator"></div>
               <div class="column">
                 <h2>Embed in your website</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-                  eligendi quasi corporis autem! Minus, numquam.
+                <p style="text-align: center;">
+                  Embed a chat interface powered by your model in your own website using the WasmLLM API and iframe.
                 </p>
                 <button id="openModal3" class="deploymentBtn">Embed</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </main>
 
     <footer>footer</footer>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+        <meta name="description" content="A conversational AI system that listens, learns, and challenges">
+        <meta property="og:title" content="WasmLLM">
+        <!-- <meta property="og:image" content="https://openai.com/content/images/2022/11/ChatGPT.jpg"> -->
+        <meta property="og:description" content="In-browser LLM inference and training platform">
+        <meta property="og:url" content="https://chat.acy.dev">
+        <link rel="stylesheet" href="select_base_model.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+        <script src="select_base_model.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/markdown-it@latest/dist/markdown-it.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/base16/dracula.min.css">
+        <script>
+            const user_image        = `<img src="user.png" alt="User Avatar">`;
+            const gpt_image         = `<img src="gpt.png" alt="GPT Avatar">`;
+        </script>
+        <style>
+            .hljs {
+                color: #e9e9f4;
+                background: #28293629;
+                border-radius: var(--border-radius-1);
+                border: 1px solid var(--blur-border);
+                font-size: 15px;
+            }
+
+            #message-input {
+                margin-right: 30px;
+                height: 80px;
+            }
+
+            #message-input::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            /* Track */
+            #message-input::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+            }
+            
+            /* Handle */
+            #message-input::-webkit-scrollbar-thumb {
+                background: #c7a2ff; 
+            }
+
+            /* Handle on hover */
+            #message-input::-webkit-scrollbar-thumb:hover {
+                background: #8b3dff; 
+            }
+        </style>
+        <script src="/assets/js/highlight.min.js"></script>
+        <script src="/assets/js/highlightjs-copy.min.js"></script>
+        <script>window.conversation_id = `{{chat_id}}`</script>
+        <title>WasmLLM</title>
+    </head>
+    <body>
+      <div class="choose-model disable-scrollbars" id="hub_page">
+        <div class="top">
+          <span>Choose a base model to train</span>
+        </div>
+
+        <div class="box models-box">
+          <div id="models" class="models-list disable-scrollbars">
+
+          </div>
+
+          <button class="load-model" onclick="start_training()" id="start_training_button" disabled>
+            <i class="fa-regular fa-comment-alt-smile"></i>
+            <span>Start Training!</span>
+          </button>
+
+        </div>
+      </div>
+    </body>
+</html>

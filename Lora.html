@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_config.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Configurations</title>
+</head>
+<body>
+    <header class = "head">
+        <div class="logo-container">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="website-name">WasmLLM</span>
+        </div>
+    </header class = "head">
+    <div class = "body">
+
+    <form >
+        <fieldset id="training-config">
+            <legend>LoRA</legend>
+        <div class="parameter-setting">
+            <label for="attentionDim" class="param-label">Attention Dimension</label>
+            <input type="range" id="attentionDim" name="attentionDim" min="1" max="128" step="1" class="param-input" oninput="updateSliderValue(this.id, 'attentionDimValue')">
+            <span id="attentionDimValue" class="param-value">64</span>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class = "tooltipText">
+                    Sets the rank of the LoRA attention. Higher values can increase the capacity of the model.
+                </span>
+            </span>
+        </div>
+
+        <div class="parameter-setting">
+            <label for="targetModules" class="param-label">Target Modules</label>
+            <input type="text" id="targetModules" name="targetModules" class="param-input" placeholder="e.g. all-linear">
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class = "tooltipText">
+                    Specifies the modules to apply the adapter. Use 'all-linear' for all linear/Conv1D modules.
+                </span>
+            </span>
+        </div>
+
+        <!--LoRA scaling (slider bar from 1 to 10 with step of 0.1)-->
+        <div class="parameter-setting">
+            <label for="loraScaling" class="param-label">LoRA Scaling</label>
+            <input type="range" id="loraScaling" name="loraScaling" min="1" max="10" step="0.1" class="param-input" oninput="updateSliderValue(this.id, 'loraScalingValue')">
+            <span id="loraScalingValue" class="param-value">5</span>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class = "tooltipText">
+                    Scales the LoRA attention scores. Higher values can increase the capacity of the model.
+                </span>
+            </span>
+        </div>
+
+        <!--LoRA dropout (slider bar from 0 to 0.5 with step of 0.01)-->
+        <div class="parameter-setting">
+            <label for="loraDropout" class="param-label">LoRA Dropout</label>
+            <input type="range" id="loraDropout" name="loraDropout" min="0" max="0.5" step="0.01" class="param-input" oninput="updateSliderValue(this.id, 'loraDropoutValue')">
+            <span id="loraDropoutValue" class="param-value">0.2</span>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class = "tooltipText">
+                    Sets the dropout probability for LoRA layers to prevent overfitting.
+                </span>
+            </span>
+        </div>
+
+        
+        <div class="parameter-setting">
+            <label for="fanInFanOut" class="param-label">Fan In Fan Out</label>
+            <select id="fanInFanOut" name="fanInFanOut" class="param-input">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText">Adjusts weight storage format for specific architectures like GPT-2.</span>
+            </span>
+        </div>
+
+        <!--Bias Type dropdown menu Options(None, All, LoRA Only)-->
+        <div class="parameter-setting">
+            <label for="biasType" class="param-label">Bias Type</label>
+            <select id="biasType" name="biasType" class="param-input">
+                <option value="None">None</option>
+                <option value="All">All</option>
+                <option value="LoRA Only">LoRA Only</option>
+            </select>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText">Determines if biases are updated during training, affecting output even when adapters are disabled.</span>
+            </span>
+        </div>
+
+        <!--Rank Stabilized-->
+        <div class="parameter-setting">
+            <label for="rankStabilized" class="param-label">Rank Stabilized</label>
+            <select id="rankStabilized" name="rankStabilized" class="param-input">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText"> Activates Rank-Stabilized LoRA for potentially better performance with modified scaling factor.</span>
+            </span>
+        </div>
+
+        <!--Modules to save (text input)-->
+        <div class="parameter-setting">
+            <label for="modulesToSave" class="param-label">Modules to Save</label>
+            <input type="text" id="modulesToSave" name="modulesToSave" class="param-input" placeholder="e.g. all-linear">
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText">Specifies modules other than adapters to be trainable and saved in the checkpoint.</span>
+            </span>
+        </div>
+
+        <!--Initialization of Weights (options: Default, Gaussian, LoftQ)-->
+        <div class="parameter-setting">
+            <label for="initWeights" class="param-label">Weights Initialization</label>
+            <select id="initWeights" name="initWeights" class="param-input">
+                <option value="Default">Default</option>
+                <option value="Gaussian">Gaussian</option>
+                <option value="LoftQ">LoftQ</option>
+            </select>
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText">Chooses the method to initialize LoRA weights, with options for Gaussian or LoftQ initialization.</span>
+            </span>
+        </div>
+
+        <!--Layers to Transform (text)-->
+        <div class="parameter-setting">
+            <label for="layersToTransform" class="param-label">Layers to Transform</label>
+            <input type="text" id="layersToTransform" name="layersToTransform" class="param-input" placeholder="e.g. all-linear">
+            <span class="material-symbols-outlined info-icon">
+                info
+                <span class="tooltipText">Specifies the indices of layers to apply transformations. Can be a single index or a list of indices.</span>
+            </span>
+        </div>
+
+        <button id="submit_training">Confirm</button>
+        </fieldset>
+
+    </form>
+    </div>
+    <footer>
+        WasmLLM 2024
+    </footer>
+
+    <script src="script_config.js"></script>
+</body>
+</html>

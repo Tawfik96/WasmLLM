@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Selection</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="upload_style.css">
+</head>
+<body>
+    <header class = "head">
+        <div class="logo-container">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="website-name">WasmLLM</span>
+        </div>
+        <h4>
+            Select your data to train the model on
+        </h4>
+    </header class = "head">
+    <div class = "page">
+        <div id="upload-container">
+            <span class="material-symbols-outlined styling">
+                upload
+            </span>
+            <header>Drag and Drop to Upload Files</header>
+            <span class="styling">or</span>
+            <button id="browse-button">Browse</button>
+            <input type="file" id="file-input" multiple style="display: none;">
+        </div>
+    </div>
+    <footer>
+        WasmLLM 2024
+    </footer>
+    <script src="upload_script.js"></script>
+</body>
+</html>

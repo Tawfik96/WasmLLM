@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasmLLM</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            /* display: flex; */
+            justify-content: center;
+            /* align-items: center; */
+            height: 100vh;
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .progress-container {
+            width: 80%;
+            margin: 12% auto;
+            background-color: #555;
+            padding: 3px;
+            border-radius: 30px;
+        }
+
+        #progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #8b3dff;
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #progress-info {
+            text-align: center;
+            margin-top: 190px;
+            font-size: 14px;
+        }
+
+        #deploy-button {
+            display: none;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff;
+            background-color: #8b3dff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: large;
+        }
+
+        #deploy-button:hover {
+            background-color: #6a00ff;
+        }
+    </style>
+</head>
+<body>
+
+  <div>
+
+    <h1>WasmLLM</h1>
+
+    <p>Training your model...</p>
+
+  </div>
+
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div>
+      <p id="progress-text">Your Model's Training Progress: 0%</p>
+    </div>
+
+    <div margin-top="30px">
+        <button id="deploy-button">Deploy Model</button>
+    </div>
+
+
+    <p id="progress-info">
+      Please wait while your amazing model is being trained... This may take a while depending on the size of your dataset and the complexity of your model.</p>
+
+
+    <script>
+        let progress = 0;
+        let interval = setInterval(function() {
+            if (progress >= 100) {
+                clearInterval(interval);
+                document.getElementById('progress-text').innerText = 'Training Completed!';
+                document.getElementById('progress-info').innerText = '';
+                document.getElementById('deploy-button').style.display = 'block';
+                document.getElementById('deploy-button').addEventListener('click', function() {
+                    window.location.href = 'deployment.html';
+                });
+            } else {
+                progress++;
+                document.getElementById('progress-bar').style.width = progress + '%';
+                document.getElementById('progress-text').innerText = "Your Model's Training Progress: " + progress + '%';
+            }
+        }, 500);
+    </script>
+</body>
+</html>
