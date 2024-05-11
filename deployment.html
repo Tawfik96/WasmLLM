@@ -27,14 +27,72 @@
           <label for="tab2-2">Deployment</label>
           <input id="tab2-2" name="tabs-two" type="radio" />
           <div>
-            <h4>Tab Two</h4>
-            <p>
-              Quisque sit amet turpis leo. Maecenas sed dolor mi. Pellentesque
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              dolorem, distinctio iure expedita tempora et eos veniam fugit
-              dolor quos commodi ipsum fugiat odio dolorum maiores aspernatur
-              placeat dolore qui.
-            </p>
+            <!-- <h2>Deployment</h2> -->
+            <div class="container">
+              <div class="column">
+                <h2>WasmLLM Hub</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                  eligendi quasi corporis autem! Minus, numquam.
+                </p>
+                <button id="openModal1" class="deploymentBtn">Upload</button>
+
+                <div id="myModal1" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Uploading To WasmLLM Hub</p>
+                    <form action="">
+                      <div class="form-control">
+                        <input type="value" required="" />
+                        <label>
+                          <span style="transition-delay: 0ms">M</span
+                          ><span style="transition-delay: 50ms">o</span
+                          ><span style="transition-delay: 100ms">d</span
+                          ><span style="transition-delay: 150ms">e</span
+                          ><span style="transition-delay: 200ms">l</span
+                          ><span style="transition-delay: 250ms"> </span
+                          ><span style="transition-delay: 300ms">N</span
+                          ><span style="transition-delay: 350ms">a</span
+                          ><span style="transition-delay: 400ms">m</span
+                          ><span style="transition-delay: 450ms">e</span>
+                        </label>
+                      </div>
+                      <div class="form-control">
+                        <input type="email" required="" />
+                        <label>
+                          <span style="transition-delay: 0ms">E</span
+                          ><span style="transition-delay: 50ms">m</span
+                          ><span style="transition-delay: 100ms">a</span
+                          ><span style="transition-delay: 150ms">i</span
+                          ><span style="transition-delay: 200ms">l</span>
+                        </label>
+                      </div>
+                      <button class="button-38" type="submit">
+                        Upload To WasmLLM
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="separator"></div>
+              <div class="column">
+                <h2>Hugging Face</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                  eligendi quasi corporis autem! Minus, numquam.
+                </p>
+                <button id="openModal2" class="deploymentBtn">Upload</button>
+              </div>
+              <div class="separator"></div>
+              <div class="column">
+                <h2>Embed in your website</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                  eligendi quasi corporis autem! Minus, numquam.
+                </p>
+                <button id="openModal3" class="deploymentBtn">Embed</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -45,21 +103,3 @@
     <script src="deployment.js"></script>
   </body>
 </html>
-
-<!-- <div class="controlBtns">
-    <button id="previewBtn" onclick="showPreview()">Preview</button>
-    <button id="deploymentBtn" onclick="showDeployment()">
-      Deployment
-    </button>
-  </div>
-  <div id="previewContent">
-    <h2>Preview Content</h2>
-    <p>This is the content for preview.</p>
-    <button>clikme</button>
-  </div>
-
-  <div id="deploymentContent" style="display: none">
-
-    <h2>Deployment Content</h2>
-    <p>This is the content for deployment.</p>
-  </div> -->
