@@ -24,15 +24,6 @@
   color: white;
 } */
 
-/* Style the header */
-header {
-  padding: 10px;
-  text-align: center;
-  font-size: 20px;
-  margin: 0;
-  border-bottom: 2px white solid;
-}
-/* Style the footer */
 footer {
   font-size: 20px;
   padding: 10px;
@@ -40,12 +31,15 @@ footer {
   margin: 0;
   border-top: 2px white solid;
 }
-/* header,
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-} */
+
+header {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 50px;
+  text-align: center;
+}
+
 main {
   padding: 20px;
   color: rgb(230, 245, 245);
@@ -406,3 +400,51 @@ select:focus {
   box-shadow: none;
 }
 
+#embedding-modal {
+  margin-top: 100px;
+  min-height: 30rem;
+}
+.codeContainer {
+  height: 400px;
+  width: 600px;
+  overflow: scroll;
+  margin: 0 auto;
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.copyButton:hover {
+  background-color: #cccccc95;
+}
+.copyButton:active {
+  background-color: #84515195;
+}
+
+code {
+  line-height: 100%;
+  background-color: #eee;
+  padding: 0.2em;
+  letter-spacing: -0.05em;
+  word-break: normal;
+  border-radius: 5px;
+  min-height: 70%;
+}
+
+pre code {
+  border: none;
+  background: none;
+  line-height: 1em;
+  letter-spacing: normal;
+  word-break: break-all;
+}
